@@ -2,10 +2,42 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema();
 
 const StockSchema = new Schema({
-    id: {required: true, type: String},
-    amount: {required: true, type: String},
-    pricePerUnit: {required: true, type: String},
-    phone: {required: true, type: String},
+    id: {
+    type: String,
+    required: [true, "id is required"],
+    unique: true,
+},
+
+    amount: {
+    type: String,
+    required: [true,"amaount is required"]
+    
+},
+    pricePerUnit: {
+    type: String,
+    required: [true,"pricePerUnit is required"]
+    
+},
+    phone: {
+    type: String,
+    required: [true, "phone number is required"]
+    
+},
+email: {
+    type: String,
+    unique: true,
+    match: [
+        /^(. +)@(\S+) $/,
+        'please provide a valid email',
+    ],
+    required: [true, "Email is required"],
+},
+product_name:{
+    type :String,
+    required: [true, "the product name is required"]
+
+},
+
 stocktype: {
     type: String,
     required: true,
@@ -19,7 +51,11 @@ entryDate:{
     type: Date,
     default: new Date(),
 },
-updateTime: {required: false, type: Date},
+updateTime: {
+    type: Date,
+    required: false
+    
+},
 
 });
 
