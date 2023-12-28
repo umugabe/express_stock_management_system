@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+// const Schema = mongoose.Schema();
 
-const StockSchema = new Schema({
+const StockSchema = mongoose.Schema({
     id: {
     type: String,
     required: [true, "id is required"],
@@ -26,10 +26,7 @@ const StockSchema = new Schema({
 email: {
     type: String,
     unique: true,
-    match: [
-        /^(. +)@(\S+) $/,
-        'please provide a valid email',
-    ],
+   
     required: [true, "Email is required"],
 },
 product_name:{
@@ -55,8 +52,7 @@ updateTime: {
     type: Date,
     required: false
     
-},
-
+}
 });
 
 module.exports = mongoose.model('stock',StockSchema);
