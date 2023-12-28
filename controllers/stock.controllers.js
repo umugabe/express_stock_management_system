@@ -1,16 +1,16 @@
 const stockModel = require('../models/stock.model');
 
 const create = async(req, res, next) =>{
-    // try {
-    //     console.log(req.body);
-    //     const savedStock = await stockModel.save(req.body);
-    //     res.status(201).json({
-    //         message: 'stock created',
-    //         stock: savedStock
-    //     })
-    // } catch (error) {
-    //     res.status(500).send("Failed to save!!")
-    // }
+    try {
+        console.log(req.body);
+        var savedStock = await stockModel.create(req.body);
+        res.status(201).json({
+            message: "stock created successfully",
+            stock: savedStock
+        })
+    } catch (error) {
+        res.status(500).send(error);
+    }
 }
 
 const update = async(req, res, next) =>{
